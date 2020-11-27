@@ -1,0 +1,9 @@
+Iterator iterator = list2.iterator();
+
+Iterator에 접근하기 위해서 Iterator형 참조변수 iterator에 iterator() 메서드를 써서 list2 주소값을 형변환 한 후 건네준다  
+
+
+4번 6번 시험
+
+ArrayList HashMap 
+
