@@ -78,3 +78,30 @@
 		 *		  검색할 값과 일치한 데이터가 없으면 -1을 리턴한다.
 		 *	9. 전체삭제 : list.clear();
 		 *	10. 반복자 : Iterator<E> iterator : while(hasNext()) { next() } 
+		 
+/*
+		 * [면접] p439
+		 * 해싱(hashing) : 키를 이용해서 해시테이블로부터 데이터를 가져오는 과정
+		 * 
+		 * HashMap
+		 * 1) 특징
+		 * - 데이터의 순서를 보장하지 않는다.
+		 * - key와  value쌍으로 저장한다.
+		 * - key는 중복되면 안된다.
+		 * - key를 이용해서 value를 가져올 수 있다.
+		 * - List 게열과 달리 index가 없다.
+		 * - Map이라는 인터페이스를 구현한 클래스이다.
+		 * 
+		 * 2) 선언
+		 * - HashMap<Key 타입, value 타입> map = new HashMap<Key타입, value타입>();
+		 * - Map<Key 타입, value타입> map = new HashMap<Key 타입, value타입>();	// 다형성 적용시
+		 * 
+		 * 3) 메서드
+		 * - 데이터 추가 : put(key, value);
+		 * - 데이터 가져오기 : get(key)
+		 * - 데이터 삭제 : remove(key)
+		 * - 데이터가 비어있는지 여부 : isEmpty()
+		 * - 해당 키가 있는지 여부 : containsKey(key)
+		 * - 해당 값이 있는지 여부 : containsValue(value)
+		 * - 해당 갯수 : size()
+		 */
