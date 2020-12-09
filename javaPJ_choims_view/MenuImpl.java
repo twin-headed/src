@@ -8,7 +8,7 @@ import javaPJ_choims_domain.Furniture;
 import javaPJ_choims_service.GuestImpl;
 import javaPJ_choims_service.Host;
 
-public class MenuImpl implements Menu{
+public class MenuImpl implements Menu {  //코드도 임플해서 if 체크하는데 상수를 써라 상수가 호스트 메뉴일때 호스트메뉴 호출하라
 	
 	HashMap<String,String> idHashMap = new HashMap<String,String>();
 	FurnitureHashMap fh = new FurnitureHashMap();
@@ -31,12 +31,17 @@ public class MenuImpl implements Menu{
 					System.out.println(" 고객 PW : ");
 					String PW = sc.next();
 					if(PW.equals(idHashMap.get(ID))) {
-						System.out.println("======================");
+						System.out.println("============================================");
 						System.out.println("                 로그인 되었습니다.");
-						System.out.println("======================");
+						System.out.println("============================================");
 						System.out.println("─────────────고객메뉴────────────");
 						System.out.println("  1.장바구니      2.구매     3.환불    4.로그아웃");
 						System.out.println("─────────────────────────────");
+						switch(sc.nextInt()) {
+						case 1: guestCartMenu();
+							
+							
+						}
 					}else System.out.println("비밀번호가 잘못되었습니다");
 				}else System.out.println("아이디가 잘못됬습니다.");
 			}while(true);		
@@ -48,27 +53,27 @@ public class MenuImpl implements Menu{
 					System.out.println(" 관리자 PW : ");
 					String PW = sc.next();
 					if(PW.equals(Host.PASSWORD)) {
-						System.out.println("======================");
+						System.out.println("============================================");
 						System.out.println("                 로그인 되었습니다.");
-						System.out.println("======================");
+						System.out.println("============================================");
 						hostMenu();
 					}else System.out.println("비밀번호가 잘못되었습니다");
 				}else System.out.println("아이디가 잘못됬습니다.");
 			}while(true);	
 		case 3: 
-			System.out.println("======================");
+			System.out.println("============================================");
 			System.out.println("                 회원가입");
-			System.out.println("======================");
+			System.out.println("============================================");
 			System.out.print(" 고객 ID : ");
 			String newID = sc.next();
 			System.out.print(" 고객 PW : ");
 			String newPW = sc.next();
 			idHashMap.put(newID, newPW);
 			guest = GuestImpl.getInstance();
-			System.out.println("======================");
+			System.out.println("============================================");
 			System.out.println("                 회원가입완료");
-			System.out.println("======================");
-			
+			System.out.println("============================================");
+			loginMenu();
 		case 4: System.out.println("실행종료");break;
 		}
 	}
@@ -165,7 +170,18 @@ public class MenuImpl implements Menu{
 
 	@Override
 	public void guestCartMenu() {
-		
+		System.out.println("─────────────장바구니────────────");
+		System.out.println("  1.추가      2.삭제     3.구매    4.이전");
+		System.out.println("─────────────────────────────");
+		switch(sc.nextInt()) {
+		case 1:
+			System.out.println("==============가구목록==============");
+			System.out.println("번호        가구명       가구브랜드      가구가격         가구수량	");
+			fh.showAllFurniture();
+			System.out.println("장바구니에 담을 가구 번호를 입력하세요");
+			
+			
+		}
 	}
 }
 
