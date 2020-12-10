@@ -52,7 +52,8 @@ public class Furniture {
 	// toString()
 	@Override 
 	public String toString() {
-		return goodsNum +"   "+ furnitureModel +"   "+ furnitureBrand +"   "+ furniturePrice +"    "+ furnitureCount; 
+		return goodsNum +"   "+
+	furnitureModel +"   "+ furnitureBrand +"   "+ furniturePrice +"    "+ furnitureCount; 
 	}
 	
 }

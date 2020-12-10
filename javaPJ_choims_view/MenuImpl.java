@@ -1,17 +1,21 @@
 package javaPJ_choims_view;
 
 import java.util.HashMap;
+
 import java.util.Iterator;
 import java.util.Scanner;
 
 import javaPJ_choims_domain.Furniture;
+import javaPJ_choims_domain.Cart;
 import javaPJ_choims_service.GuestImpl;
 import javaPJ_choims_service.Host;
+
 
 public class MenuImpl implements Menu {  //코드도 임플해서 if 체크하는데 상수를 써라 상수가 호스트 메뉴일때 호스트메뉴 호출하라
 	
 	HashMap<String,String> idHashMap = new HashMap<String,String>();
 	FurnitureHashMap fh = new FurnitureHashMap();
+	Cart ct = new Cart();
 	
 	Scanner sc = new Scanner(System.in);
 	GuestImpl guest;
@@ -106,7 +110,6 @@ public class MenuImpl implements Menu {  //코드도 임플해서 if 체크하�
 				break;
 			case 2: 
 				System.out.println("=======가구등록======== 이전 0");
-					
 					System.out.print("가구명  : " );
 					String fModel = sc.next();
 					if(fModel.equals("0")) {
@@ -179,6 +182,10 @@ public class MenuImpl implements Menu {  //코드도 임플해서 if 체크하�
 			System.out.println("번호        가구명       가구브랜드      가구가격         가구수량	");
 			fh.showAllFurniture();
 			System.out.println("장바구니에 담을 가구 번호를 입력하세요");
+			int number = sc.nextInt();
+			System.out.println("장바구니에 담을 가구 수량을 입력하세요");
+			int quantity = sc.nextInt();
+			ct.addCart(fh.getfHashMap().get(number), quantity);
 			
 			
 		}
