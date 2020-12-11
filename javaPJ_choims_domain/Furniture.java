@@ -1,7 +1,7 @@
 package javaPJ_choims_domain;
 
 // DTO(Data Transfer Object)
-public class Furniture {
+public class Furniture implements Cloneable{
 
 	// 멤버변수
 	private String furnitureModel;		// 책 제목
@@ -55,5 +55,9 @@ public class Furniture {
 		return goodsNum +"   "+
 	furnitureModel +"   "+ furnitureBrand +"   "+ furniturePrice +"    "+ furnitureCount; 
 	}
+	@Override
+    public Object clone() throws CloneNotSupportedException{
+    	return super.clone();
+    }
 	
 }

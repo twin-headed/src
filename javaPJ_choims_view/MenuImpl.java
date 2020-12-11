@@ -4,21 +4,19 @@ import java.util.HashMap;
 
 import java.util.Iterator;
 import java.util.Scanner;
-
 import javaPJ_choims_domain.Furniture;
 import javaPJ_choims_domain.Cart;
 import javaPJ_choims_service.GuestImpl;
+import javaPJ_choims_service.HostImpl;
 import javaPJ_choims_service.Host;
-
+ 
 
 public class MenuImpl implements Menu {  //코드도 임플해서 if 체크하는데 상수를 써라 상수가 호스트 메뉴일때 호스트메뉴 호출하라
 	
 	HashMap<String,String> idHashMap = new HashMap<String,String>();
-	FurnitureHashMap fh = new FurnitureHashMap();
-	Cart ct = new Cart();
-	
 	Scanner sc = new Scanner(System.in);
-	GuestImpl guest;
+	
+	private static MenuImpl instance = new MenuImpl();
 	
 	@Override
 	public void loginMenu() {
@@ -41,10 +39,11 @@ public class MenuImpl implements Menu {  //코드도 임플해서 if 체크하�
 						System.out.println("─────────────고객메뉴────────────");
 						System.out.println("  1.장바구니      2.구매     3.환불    4.로그아웃");
 						System.out.println("─────────────────────────────");
+						System.out.print("메뉴번호를 입력하세요. : ");
 						switch(sc.nextInt()) {
-						case 1: guestCartMenu();
-							
-							
+						case 1: GuestImpl.getInstance().cartList();
+								guestCartMenu();
+								break;
 						}
 					}else System.out.println("비밀번호가 잘못되었습니다");
 				}else System.out.println("아이디가 잘못됬습니다.");
@@ -73,7 +72,6 @@ public class MenuImpl implements Menu {  //코드도 임플해서 if 체크하�
 			System.out.print(" 고객 PW : ");
 			String newPW = sc.next();
 			idHashMap.put(newID, newPW);
-			guest = GuestImpl.getInstance();
 			System.out.println("============================================");
 			System.out.println("                 회원가입완료");
 			System.out.println("============================================");
@@ -92,6 +90,9 @@ public class MenuImpl implements Menu {  //코드도 임플해서 if 체크하�
 		case 1: hostStockMenu();
 		case 2: hostOrderMenu();
 		case 3: 
+			System.out.println("로그아웃되었습니다");
+			loginMenu();
+		
 		}
 	}
 
@@ -104,58 +105,16 @@ public class MenuImpl implements Menu {  //코드도 임플해서 if 체크하�
 			System.out.print("메뉴번호를 입력하세요. : ");
 			switch(sc.nextInt()) {
 			case 1:
-				System.out.println("==============가구목록==============");
-				System.out.println("번호        가구명       가구브랜드      가구가격         가구수량	");
-				fh.showAllFurniture();
-				break;
+				HostImpl.getInstance().furnitureList();
+					break;
 			case 2: 
-				System.out.println("=======가구등록======== 이전 0");
-					System.out.print("가구명  : " );
-					String fModel = sc.next();
-					if(fModel.equals("0")) {
-						hostStockMenu();
-					}
-					System.out.print("가구 브랜드 : ");
-					String fBrand = sc.next();
-					System.out.print("가구 가격 : ");
-					int fPrice = sc.nextInt();
-					System.out.print("가구 수량 : ");
-					int fCount = sc.nextInt();
-					int goodsNum = (int)(Math.random()*1000)+1000;
-					fh.addFurniture(goodsNum, new Furniture(fModel,fBrand,fPrice,fCount,goodsNum));
-					System.out.println("=======" + goodsNum + "번 가구가 등록되었습니다=====");
+				HostImpl.getInstance().furnitureAdd();
 					break;
 			case 3:
-				System.out.print("수정하려는 가구번호를 입력하세요 : 이전0");
-					int fEdit = sc.nextInt();
-					if(fEdit == 0) {
-						hostStockMenu();
-					}
-					if(fh.getfHashMap().containsKey(fEdit)) {
-						fh.removeFurniture(fEdit);
-						System.out.println("================가구 수정================");
-						System.out.print("가구명  : " );
-						String fModelEdit = sc.next();
-						System.out.print("가구 브랜드 : ");
-						String fBrandEdit = sc.next();
-						System.out.print("가구 가격 : ");
-						int fPriceEdit = sc.nextInt();
-						System.out.print("가구 수량 : ");
-						int fCountEdit = sc.nextInt();
-						fh.addFurniture(fEdit,new Furniture(fModelEdit,fBrandEdit,fPriceEdit,fCountEdit,fEdit));
-						System.out.println("==================가구수정완료==================");
-						break;
-					}	
+				HostImpl.getInstance().furnitureUpdate();
+					break;
 			case 4:
-					System.out.print("삭제하려는 가구번호를 입력하세요 : 이전 0");
-					int fDel = sc.nextInt();
-					if(fDel == 0) {
-						hostStockMenu();
-					}
-					if(fh.getfHashMap().containsKey(fDel)) {
-						fh.removeFurniture(fDel);
-					}
-					System.out.println("=============가구 삭제 완료==============");
+				HostImpl.getInstance().furnitureDel();
 					break;
 			case 5: hostMenu();
 			}//switch
@@ -176,51 +135,18 @@ public class MenuImpl implements Menu {  //코드도 임플해서 if 체크하�
 		System.out.println("─────────────장바구니────────────");
 		System.out.println("  1.추가      2.삭제     3.구매    4.이전");
 		System.out.println("─────────────────────────────");
+		System.out.print("메뉴 번호를 입력하세요. : ");
 		switch(sc.nextInt()) {
 		case 1:
-			System.out.println("==============가구목록==============");
-			System.out.println("번호        가구명       가구브랜드      가구가격         가구수량	");
-			fh.showAllFurniture();
-			System.out.println("장바구니에 담을 가구 번호를 입력하세요");
-			int number = sc.nextInt();
-			System.out.println("장바구니에 담을 가구 수량을 입력하세요");
-			int quantity = sc.nextInt();
-			ct.addCart(fh.getfHashMap().get(number), quantity);
-			
-			
+			HostImpl.getInstance().furnitureList();
+			GuestImpl.getInstance().cartAdd();
+			break;
 		}
+	}
+	public static MenuImpl getInstance() {
+		return instance;
 	}
 }
 
-class FurnitureHashMap {
-	private HashMap<Integer,Furniture> fHashMap;
-	
-	public HashMap<Integer, Furniture> getfHashMap() {
-		return fHashMap;
-	}
-	
-	public FurnitureHashMap() {
-		fHashMap = new HashMap<Integer, Furniture>();
-	}
-	
-	public void addFurniture(int goodsNum,Furniture furniture) {
-		fHashMap.put(goodsNum, furniture);
-	}
-	
-	public boolean removeFurniture(int goodsNum) {
-		fHashMap.remove(goodsNum);
-		return true;
-	}
-	
-	public void showAllFurniture() {
-		Iterator<Integer> ir = fHashMap.keySet().iterator();
-		while(ir.hasNext()) {
-			int key = ir.next();
-			Furniture furniture = fHashMap.get(key);
-			System.out.println(furniture);
-		}
-		System.out.println();
-	}
-}
 
 

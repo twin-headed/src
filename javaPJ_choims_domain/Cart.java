@@ -1,10 +1,12 @@
 package javaPJ_choims_domain;
 
+import java.util.HashMap;
+
 public class Cart {
 
-	public void addCart(Furniture furniture, int quantity) {
-		Furniture();
-		
-	}
+	private static HashMap<Integer,Furniture> cart = new HashMap<Integer,Furniture>();
 	
+	public static HashMap<Integer, Furniture> getCart() {
+		return cart;
+	}
 }
