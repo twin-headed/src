@@ -26,6 +26,7 @@ Equi Join -- 매우 중요
 4. JOIN-ON
  테이블명과 테이블명 사이에 콤마(,) 대신 JOIN을 사용하고
  공통으로 존재하는 키를 비교하는 WHERE 대신에 on을 사용한다.
+ 다른 검색이나 필터조건은 WHERE절에 분리해서 기술한다.
  */
 
 
@@ -99,5 +100,91 @@ SELECT e.employee_id AS 사번
     , departments d
  WHERE d.department_id = e.department_id
    AND d.department_name LIKE '%IT%';
- 
+   
+-- 4일차
+-- country_id가 'US'인 나라의 country_id, 나라명, 지역ID, 지역명
+SELECT c.country_id
+     , c.country_name
+     , r.region_id
+     , r.region_name
+FROM regions r , countries c
+WHERE c.country_id = 'US'
+    AND r.region_id = c.region_id;
+    
+--JOIN-ON
+SELECT c.country_id
+     , c.country_name
+     , r.region_id
+     , r.region_name
+FROM regions r JOIN countries c
+ON c.country_id = 'US'
+    AND r.region_id = c.region_id;
 
+-- 'Seattle'이라는 city에서 근무하는 사원의 사번, last_name, salary, -사원테이블
+--   부서명 , city 조회  - 위치테이블
+
+SELECT e.employee_id
+     , e.last_name
+     , e.salary
+     , d.department_name
+     , l.city
+FROM employees e ,departments d ,locations l
+WHERE d.department_id = e.department_id
+    AND l.location_id = d.location_id
+    AND l.city LIKE '%Seattle%';
+
+-- 부서 코드가 100번인 사원의 사번, last_name, 부서코드, 부서명
+-- job_title, max_salary, min_salary
+
+SELECT e.employee_id
+     , e.last_name
+     , d.department_id
+     , d.department_name
+     , j.job_title
+     , MAX(salary)
+     , MIN(salary)
+FROM departments d , employees e , jobs j
+WHERE d.department_id = e.department_id
+    AND e.job_id = j.job_id
+    AND d.department_id = 100
+GROUP BY e.employee_id, e.last_name, d.department_id, d.department_name, j.job_title;
+
+SELECT e.employee_id
+     , e.last_name
+     , d.department_id
+     , d.department_name
+     , j.job_title
+     , MAX(salary)
+     , MIN(salary)
+FROM departments d 
+    JOIN employees e
+    ON d.department_id = e.department_id
+    JOIN jobs j
+    ON e.job_id = j.job_id
+WHERE d.department_id = 100
+GROUP BY e.employee_id, e.last_name, d.department_id, d.department_name, j.job_title;
+
+
+--사번이 101번, job_history의 start_date가 '97/09/21'인 사원의 사번, last_name,
+--부서정보, 위치정보, 국가정보, 지역정보, 직무정보, 직무history 정보 가져오기
+
+SELECT e.employee_id
+     , e.last_name
+     , c.*
+     , d.*
+     , j.*
+     , b.*
+     , l.*
+     , r.*
+FROM employees e, departments d, countries c, job_history j, jobs b, locations l, regions r
+WHERE e.employee_id = 101
+    AND j.start_date = '97/09/21'
+    AND b.job_id = j.job_id
+    AND e.employee_id = j.employee_id
+    AND d.department_id = e.department_id
+    AND l.location_id = d.location_id
+    AND c.country_id = l.country_id
+    AND r.region_id = c.region_id;
+   
+
+    
