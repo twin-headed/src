@@ -4,9 +4,8 @@ package javaPJ_choims_view;
 
 public class Console {
 	public static void main(String[] args) {
-		MenuImpl mi = new MenuImpl();
-		mi.loginMenu();
 		
+		MenuImpl.getInstance().loginMenu();
 	}
 }
 

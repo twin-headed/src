@@ -36,15 +36,7 @@ public class MenuImpl implements Menu {  //코드도 임플해서 if 체크하�
 						System.out.println("============================================");
 						System.out.println("                 로그인 되었습니다.");
 						System.out.println("============================================");
-						System.out.println("─────────────고객메뉴────────────");
-						System.out.println("  1.장바구니      2.구매     3.환불    4.로그아웃");
-						System.out.println("─────────────────────────────");
-						System.out.print("메뉴번호를 입력하세요. : ");
-						switch(sc.nextInt()) {
-						case 1: GuestImpl.getInstance().cartList();
-								guestCartMenu();
-								break;
-						}
+						guestMenu();
 					}else System.out.println("비밀번호가 잘못되었습니다");
 				}else System.out.println("아이디가 잘못됬습니다.");
 			}while(true);		
@@ -92,7 +84,6 @@ public class MenuImpl implements Menu {  //코드도 임플해서 if 체크하�
 		case 3: 
 			System.out.println("로그아웃되었습니다");
 			loginMenu();
-		
 		}
 	}
 
@@ -122,12 +113,50 @@ public class MenuImpl implements Menu {  //코드도 임플해서 if 체크하�
 	}
 	@Override
 	public void hostOrderMenu() {
-		
+		while(true) {
+			System.out.println("────────────주문관리────────────");
+			System.out.println("  1.목록   2.승인   3.취소    4.결산    5.이전   ");
+			System.out.println("─────────────────────────────");
+			System.out.print("메뉴번호를 입력하세요. : ");
+			switch(sc.nextInt()) {
+			case 1:
+				HostImpl.getInstance().orderList();
+					break;
+			case 2: 
+				HostImpl.getInstance().orderConfirm();
+					break;
+			case 3:
+				HostImpl.getInstance().furnitureUpdate();
+					break;
+			case 4:
+				HostImpl.getInstance().saleTotal();
+					break;
+			case 5: hostMenu();
+			}//switch
+		}//while
 	}
 
 	@Override
 	public void guestMenu() {
-		
+		System.out.println("─────────────고객메뉴────────────");
+		System.out.println("  1.장바구니      2.구매     3.환불    4.로그아웃");
+		System.out.println("─────────────────────────────");
+		System.out.print("메뉴번호를 입력하세요. : ");
+		switch(sc.nextInt()) {
+		case 1: 
+				GuestImpl.getInstance().cartList();
+				guestCartMenu();
+				break;
+		case 2:
+				GuestImpl.getInstance().nowBuy();
+				break;
+		case 3:
+				
+		case 4:
+				System.out.println("로그아웃 되었습니다.");
+				loginMenu();
+				break;
+		}
 	}
 
 	@Override
@@ -141,8 +170,18 @@ public class MenuImpl implements Menu {  //코드도 임플해서 if 체크하�
 			HostImpl.getInstance().furnitureList();
 			GuestImpl.getInstance().cartAdd();
 			break;
+		case 2:
+			GuestImpl.getInstance().cartDel();
+			break;   
+		case 3:
+			GuestImpl.getInstance().cartBuy();
+			break;
+		case 4:
+			guestMenu();
+			break;
 		}
 	}
+	
 	public static MenuImpl getInstance() {
 		return instance;
 	}
