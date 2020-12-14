@@ -115,6 +115,19 @@ public class GuestImpl implements Guest{
 
 	@Override
 	public void refund() {
+		System.out.println("============주문가구목록==============");
+		System.out.println("번호        가구명       가구브랜드      가구가격         가구수량	");
+		Iterator<Integer> ir = Buy.getBuy().keySet().iterator();
+		while(ir.hasNext()) {
+			int key = ir.next();
+			Furniture furniture = Buy.getBuy().get(key);
+			System.out.println(furniture);
+		}
+		System.out.print("환불 요청할 가구의 번호를 입력하세요 [이전 :0] : ");
+		int num = sc.nextInt();
+		if(num == 0) {
+			MenuImpl.getInstance().guestMenu();
+		}
 		
 	}
 	

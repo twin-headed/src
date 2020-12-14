@@ -151,7 +151,8 @@ public class MenuImpl implements Menu {  //코드도 임플해서 if 체크하�
 				GuestImpl.getInstance().nowBuy();
 				break;
 		case 3:
-				
+				GuestImpl.getInstance().refund();
+				break;
 		case 4:
 				System.out.println("로그아웃 되었습니다.");
 				loginMenu();
