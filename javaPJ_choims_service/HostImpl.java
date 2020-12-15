@@ -7,6 +7,7 @@ import java.util.Scanner;
 import javaPJ_choims_domain.Buy;
 import javaPJ_choims_domain.Cart;
 import javaPJ_choims_domain.Furniture;
+import javaPJ_choims_domain.Refund;
 import javaPJ_choims_domain.Stock;
 import javaPJ_choims_view.MenuImpl;
 
@@ -113,7 +114,30 @@ public class HostImpl implements Host{
 
 	@Override
 	public void orderCancel() {
-	
+			System.out.println("============환불 요청 목록==============");
+			System.out.println("번호        가구명       가구브랜드      가구가격         가구수량	");
+			Iterator<Integer> ir = Refund.getRefund().keySet().iterator();
+			while(ir.hasNext()) {
+				int key = ir.next();
+				Furniture furniture = Refund.getRefund().get(key);
+				System.out.println(furniture);
+			}
+			System.out.print("환불 요청할 가구의 번호를 입력하세요 [이전 :0] : ");
+			int num = sc.nextInt();
+			if(num == 0) {
+				MenuImpl.getInstance().hostOrderMenu();
+			}else if(Refund.getRefund().containsKey(num)) {
+				try {
+					Furniture clone = (Furniture) Refund.getRefund().get(num).clone();
+					Stock.getStock().put(num, clone);
+				} catch (CloneNotSupportedException e) {
+					e.printStackTrace();
+				}
+				sum -= Refund.getRefund().get(num).getFurniturePrice()*Refund.getRefund().get(num).getFurnitureCount();
+				Refund.getRefund().remove(num);
+				Buy.getBuy().remove(num);
+				System.out.println("환불 처리 되었습니다.");
+			}
 	}
 
 	@Override

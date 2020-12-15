@@ -1,9 +1,11 @@
 package javaPJ_choims_service;
 
 import java.util.HashMap;
+
 import java.util.Iterator;
 import java.util.Scanner;
 
+import javaPJ_choims_domain.Refund;
 import javaPJ_choims_domain.Buy;
 import javaPJ_choims_domain.Cart;
 import javaPJ_choims_domain.Furniture;
@@ -123,12 +125,20 @@ public class GuestImpl implements Guest{
 			Furniture furniture = Buy.getBuy().get(key);
 			System.out.println(furniture);
 		}
-		System.out.print("환불 요청할 가구의 번호를 입력하세요 [이전 :0] : ");
-		int num = sc.nextInt();
-		if(num == 0) {
-			MenuImpl.getInstance().guestMenu();
+		while(true) {
+			System.out.print("환불 요청할 가구의 번호를 입력하세요 [이전 :0] : ");
+			int num = sc.nextInt();
+			if(num == 0) {
+				MenuImpl.getInstance().guestMenu();
+			}
+			try {
+				Furniture clone = (Furniture) Buy.getBuy().get(num).clone();
+				Refund.getRefund().put(num, clone);
+			} catch (CloneNotSupportedException e) {
+				e.printStackTrace();
+			}
+			System.out.println("환불요청되었습니다.");
 		}
-		
 	}
 	
 	public static GuestImpl getInstance() {

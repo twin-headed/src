@@ -126,7 +126,7 @@ public class MenuImpl implements Menu {  //코드도 임플해서 if 체크하�
 				HostImpl.getInstance().orderConfirm();
 					break;
 			case 3:
-				HostImpl.getInstance().furnitureUpdate();
+				HostImpl.getInstance().orderCancel();
 					break;
 			case 4:
 				HostImpl.getInstance().saleTotal();
