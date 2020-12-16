@@ -1,7 +1,6 @@
 package javaPJ_choims_view;
 
 import java.util.HashMap;
-
 import java.util.Iterator;
 import java.util.Scanner;
 import javaPJ_choims_domain.Furniture;
@@ -13,10 +12,12 @@ import javaPJ_choims_service.Host;
 
 public class MenuImpl implements Menu {  //코드도 임플해서 if 체크하는데 상수를 써라 상수가 호스트 메뉴일때 호스트메뉴 호출하라
 	
-	HashMap<String,String> idHashMap = new HashMap<String,String>();
+	HashMap<String,Integer> idHashMap = new HashMap<String,Integer>();
 	Scanner sc = new Scanner(System.in);
-	
 	private static MenuImpl instance = new MenuImpl();
+	String ID;
+	int PW;
+	
 	
 	@Override
 	public void loginMenu() {
@@ -28,7 +29,7 @@ public class MenuImpl implements Menu {  //코드도 임플해서 if 체크하�
 		case 1: 
 			do {
 				System.out.print(" 고객 ID : ");
-				String ID = sc.next();
+				ID = sc.next();
 				if(idHashMap.containsKey(ID)) {
 					System.out.println(" 고객 PW : ");
 					String PW = sc.next();
@@ -60,10 +61,18 @@ public class MenuImpl implements Menu {  //코드도 임플해서 if 체크하�
 			System.out.println("                 회원가입");
 			System.out.println("============================================");
 			System.out.print(" 고객 ID : ");
-			String newID = sc.next();
-			System.out.print(" 고객 PW : ");
-			String newPW = sc.next();
-			idHashMap.put(newID, newPW);
+			ID = sc.next();
+			while(true) {
+				try {
+					System.out.print(" 고객 PW : ");
+					PW = sc.nextInt();
+					break;
+				}catch(Exception e) {
+					sc = new Scanner(System.in);
+					System.out.println("숫자로 입력해주세요");
+				}
+			}
+			idHashMap.put(ID, PW);
 			System.out.println("============================================");
 			System.out.println("                 회원가입완료");
 			System.out.println("============================================");
