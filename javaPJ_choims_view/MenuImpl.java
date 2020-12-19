@@ -17,15 +17,30 @@ public class MenuImpl implements Menu {  //코드도 임플해서 if 체크하�
 	private static MenuImpl instance = new MenuImpl();
 	String ID;
 	int PW;
-	
+	int choice;
 	
 	@Override
 	public void loginMenu() {
 		System.out.println("─────────────로그인────────────");
 		System.out.println("  1.고객      2.관리자     3.회원가입    4.종료");
 		System.out.println("─────────────────────────────");
-		System.out.print("메뉴번호를 입력하세요. : ");
-		switch(sc.nextInt()) {
+		while(true) {
+			try {
+				System.out.print("메뉴 번호를 입력하세요. : ");
+				choice = sc.nextInt();
+				if(choice <1 || choice>4) {
+					while(choice<1 || choice >4) {
+						System.out.print("1~4까지의 번호를 입력해주세요 : ");
+						choice = sc.nextInt();
+					}
+				}
+				break;
+			}catch(Exception e) {
+				sc = new Scanner(System.in);
+				System.out.println("숫자로 입력해주세요");
+			}
+		}
+		switch(choice) {
 		case 1: 
 			do {
 				System.out.print(" 고객 ID : ");
@@ -77,7 +92,9 @@ public class MenuImpl implements Menu {  //코드도 임플해서 if 체크하�
 			System.out.println("                 회원가입완료");
 			System.out.println("============================================");
 			loginMenu();
-		case 4: System.out.println("실행종료");break;
+		case 4: System.out.println("실행종료");
+					  sc.close();
+					  break;
 		}
 	}
 
@@ -86,8 +103,23 @@ public class MenuImpl implements Menu {  //코드도 임플해서 if 체크하�
 		System.out.println("────────────관리자메뉴─────────");
 		System.out.println("  1.재고관리      2.주문관리     3.로그아웃 ");
 		System.out.println("──────────────────────────");
-		System.out.print("메뉴번호를 입력하세요. : ");
-		switch(sc.nextInt()) {
+		while(true) {
+			try {
+				System.out.print("메뉴 번호를 입력하세요. : ");
+				choice = sc.nextInt();
+				if(choice <1 || choice>3) {
+					while(choice<1 || choice >3) {
+						System.out.print("1~3까지의 번호를 입력해주세요 : ");
+						choice = sc.nextInt();
+					}
+				}
+				break;
+			}catch(Exception e) {
+				sc = new Scanner(System.in);
+				System.out.println("숫자로 입력해주세요");
+			}
+		}
+		switch(choice) {
 		case 1: hostStockMenu();
 		case 2: hostOrderMenu();
 		case 3: 
@@ -102,8 +134,23 @@ public class MenuImpl implements Menu {  //코드도 임플해서 if 체크하�
 			System.out.println("────────────재고관리────────────");
 			System.out.println("  1.목록   2.추가   3.수정    4.삭제    5.이전   ");
 			System.out.println("─────────────────────────────");
-			System.out.print("메뉴번호를 입력하세요. : ");
-			switch(sc.nextInt()) {
+			while(true) {
+				try {
+					System.out.print("메뉴 번호를 입력하세요. : ");
+					choice = sc.nextInt();
+					if(choice <1 || choice>5) {
+						while(choice<1 || choice >5) {
+							System.out.print("1~5까지의 번호를 입력해주세요 : ");
+							choice = sc.nextInt();
+						}
+					}
+					break;
+				}catch(Exception e) {
+					sc = new Scanner(System.in);
+					System.out.println("숫자로 입력해주세요");
+				}
+			}
+			switch(choice) {
 			case 1:
 				HostImpl.getInstance().furnitureList();
 					break;
@@ -126,8 +173,23 @@ public class MenuImpl implements Menu {  //코드도 임플해서 if 체크하�
 			System.out.println("────────────주문관리────────────");
 			System.out.println("  1.목록   2.승인   3.취소    4.결산    5.이전   ");
 			System.out.println("─────────────────────────────");
-			System.out.print("메뉴번호를 입력하세요. : ");
-			switch(sc.nextInt()) {
+			while(true) {
+				try {
+					System.out.print("메뉴 번호를 입력하세요. : ");
+					choice = sc.nextInt();
+					if(choice <1 || choice>5) {
+						while(choice<1 || choice >5) {
+							System.out.print("1~5까지의 번호를 입력해주세요 : ");
+							choice = sc.nextInt();
+						}
+					}
+					break;
+				}catch(Exception e) {
+					sc = new Scanner(System.in);
+					System.out.println("숫자로 입력해주세요");
+				}
+			}
+			switch(choice) {
 			case 1:
 				HostImpl.getInstance().orderList();
 					break;
@@ -150,8 +212,23 @@ public class MenuImpl implements Menu {  //코드도 임플해서 if 체크하�
 		System.out.println("─────────────고객메뉴────────────");
 		System.out.println("  1.장바구니      2.구매     3.환불    4.로그아웃");
 		System.out.println("─────────────────────────────");
-		System.out.print("메뉴번호를 입력하세요. : ");
-		switch(sc.nextInt()) {
+		while(true) {
+			try {
+				System.out.print("메뉴 번호를 입력하세요. : ");
+				choice = sc.nextInt();
+				if(choice <1 || choice>4) {
+					while(choice<1 || choice >4) {
+						System.out.print("1~4까지의 번호를 입력해주세요 : ");
+						choice = sc.nextInt();
+					}
+				}
+				break;
+			}catch(Exception e) {
+				sc = new Scanner(System.in);
+				System.out.println("숫자로 입력해주세요");
+			}
+		}
+		switch(choice) {
 		case 1: 
 				GuestImpl.getInstance().cartList();
 				guestCartMenu();
@@ -174,8 +251,23 @@ public class MenuImpl implements Menu {  //코드도 임플해서 if 체크하�
 		System.out.println("─────────────장바구니────────────");
 		System.out.println("  1.추가      2.삭제     3.구매    4.이전");
 		System.out.println("─────────────────────────────");
-		System.out.print("메뉴 번호를 입력하세요. : ");
-		switch(sc.nextInt()) {
+		while(true) {
+			try {
+				System.out.print("메뉴 번호를 입력하세요. : ");
+				choice = sc.nextInt();
+				if(choice <1 || choice>4) {
+					while(choice<1 || choice >4) {
+						System.out.print("1~4까지의 번호를 입력해주세요 : ");
+						choice = sc.nextInt();
+					}
+				}
+				break;
+			}catch(Exception e) {
+				sc = new Scanner(System.in);
+				System.out.println("숫자로 입력해주세요");
+			}
+		}
+		switch(choice) {
 		case 1:
 			HostImpl.getInstance().furnitureList();
 			GuestImpl.getInstance().cartAdd();

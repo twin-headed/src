@@ -20,6 +20,11 @@ public class HostImpl implements Host{
 	private HostImpl() {}
 	
 	int sum = 0;
+	String fModel;
+	String fBrand;
+	int fPrice;
+	int fCount;
+	int goodsNum;
 	
 	@Override  // 가구리스트
 	public void furnitureList() {
@@ -38,14 +43,30 @@ public class HostImpl implements Host{
 	public void furnitureAdd() {
 		System.out.println("=======가구등록========");
 		System.out.print("가구명  : " );
-		String fModel = sc.next();
+		fModel = sc.next();
 		System.out.print("가구 브랜드 : ");
-		String fBrand = sc.next();
-		System.out.print("가구 가격 : ");
-		int fPrice = sc.nextInt();
-		System.out.print("가구 수량 : ");
-		int fCount = sc.nextInt();
-		int goodsNum = (int)(Math.random()*1000)+1000;
+		fBrand = sc.next();
+		while(true) {
+			try {
+				System.out.print(" 가구 가격 : ");
+				fPrice = sc.nextInt();
+				break;
+			}catch(Exception e) {
+				sc = new Scanner(System.in);
+				System.out.println("숫자로 입력해주세요");
+			}
+		}
+		while(true) {
+			try {
+				System.out.print(" 가구 수량 : ");
+				fCount = sc.nextInt();
+				break;
+			}catch(Exception e) {
+				sc = new Scanner(System.in);
+				System.out.println("숫자로 입력해주세요");
+			}
+		}
+		goodsNum = (int)(Math.random()*1000)+1000;
 		Stock.getStock().put(goodsNum,new Furniture(fModel,fBrand,fPrice,fCount,goodsNum));
 	}
 
