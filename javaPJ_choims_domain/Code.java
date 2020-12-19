@@ -23,12 +23,12 @@ public interface Code {
 	static final int HOST_ORDER_CANCEL = 123;	// 결제취소
 	
 	// 관리자 - 결산
-	static final int HOST_SALE_TOTAL = 130;		// 결산
+	static final int HOST_SALE_TOTAL = 124;		// 결산
 	
 	// ---------------------------------------------------
 	
 	// 고객
-	static final int GUEST_MENU = 200;					// 관리자
+	static final int GUEST_MENU = 200;					// 손님
 	// 고객 - 상품목록
 	static final int GUEST_GOODS = 210;				// 상품리스트
 	

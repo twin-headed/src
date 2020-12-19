@@ -72,34 +72,71 @@ public class HostImpl implements Host{
 
 	@Override  // 가구수정
 	public void furnitureUpdate() {
-		System.out.print("수정하려는 가구번호를 입력하세요 [이전0] : ");
-		int fEdit = sc.nextInt();
+		 int fEdit;
+		while(true) {
+			try {
+				System.out.print("수정하려는 가구번호를 입력하세요 [이전0] : ");
+				fEdit = sc.nextInt();
+				break;
+			}catch(Exception e) {
+				sc = new Scanner(System.in);
+				System.out.println("숫자로 입력해주세요");
+			}
+		}
 		if(fEdit == 0) {
 			return;
 		}else if(Stock.getStock().containsKey(fEdit)) {
 			Stock.getStock().remove(fEdit);
 			System.out.println("================가구 수정================");
 			System.out.print("가구명  : " );
-			String fModelEdit = sc.next();
+			fModel = sc.next();
 			System.out.print("가구 브랜드 : ");
-			String fBrandEdit = sc.next();
-			System.out.print("가구 가격 : ");
-			int fPriceEdit = sc.nextInt();
-			System.out.print("가구 수량 : ");
-			int fCountEdit = sc.nextInt();
-			Stock.getStock().put(fEdit,new Furniture(fModelEdit,fBrandEdit,fPriceEdit,fCountEdit,fEdit));
+			fBrand = sc.next();
+			while(true) {
+				try {
+					System.out.print("가구 가격 : ");
+					fPrice = sc.nextInt();
+					break;
+				}catch(Exception e) {
+					sc = new Scanner(System.in);
+					System.out.println("숫자로 입력해주세요");
+				}
+			}
+			while(true) {
+				try {
+					System.out.print("가구 수량 : ");
+					fCount = sc.nextInt();
+					break;
+				}catch(Exception e) {
+					sc = new Scanner(System.in);
+					System.out.println("숫자로 입력해주세요");
+				}
+			}
+			Stock.getStock().put(fEdit,new Furniture(fModel,fBrand,fPrice,fCount,fEdit));
 			System.out.println("==================가구수정완료==================");
 		}
 	}
 
 	@Override //가구 삭제
 	public void furnitureDel() {
-		System.out.print("삭제하려는 가구번호를 입력하세요 [이전0] : ");
-		int fDel = sc.nextInt();
+		int fDel;
+		while(true) {
+			try {
+				System.out.print("삭제하려는 가구번호를 입력하세요 [이전0] : ");
+				fDel = sc.nextInt();
+				break;
+			}catch(Exception e) {
+				sc = new Scanner(System.in);
+				System.out.println("숫자로 입력해주세요");
+			}
+		}
 		if(fDel == 0) {
 			return;
 		}else if(Stock.getStock().containsKey(fDel)) {
 			Stock.getStock().remove(fDel);
+		}else {
+			System.out.println("삭제하려는 가구가 없습니다.");
+			return;
 		}
 		System.out.println("=============가구 삭제 완료==============");
 	}
@@ -117,24 +154,32 @@ public class HostImpl implements Host{
 		MenuImpl.getInstance().hostOrderMenu();
 	}
 	
-
-	@Override  // 
+	@Override  // 구매승인
 	public void orderConfirm() {
-		System.out.print("구매 승인 할 번호를 입력해주세요  [이전 0] : ");
-		int num = sc.nextInt();
+		int num;
+		while(true) {
+			try {
+				System.out.print("구매 승인 할 번호를 입력해주세요  [이전 0] : ");
+				num = sc.nextInt();
+				break;
+			}catch(Exception e) {
+				sc = new Scanner(System.in);
+				System.out.println("숫자로 입력해주세요");
+			}
+		}
 		if(num == 0) {
-			MenuImpl.getInstance().hostOrderMenu();
+			return;
 		}else if(Buy.getBuy().containsKey(num)) {
 			sum += Buy.getBuy().get(num).getFurniturePrice() * Buy.getBuy().get(num).getFurnitureCount();
 			System.out.println("결제 승인 되었습니다");
 		}else {
 			System.out.println("잘못된 번호입니다.");
-			orderConfirm();
 		}
 	}
 
-	@Override
+	@Override // 환불승인
 	public void orderCancel() {
+			int num;
 			System.out.println("============환불 요청 목록==============");
 			System.out.println("번호        가구명       가구브랜드      가구가격         가구수량	");
 			Iterator<Integer> ir = Refund.getRefund().keySet().iterator();
@@ -143,10 +188,18 @@ public class HostImpl implements Host{
 				Furniture furniture = Refund.getRefund().get(key);
 				System.out.println(furniture);
 			}
-			System.out.print("환불 요청할 가구의 번호를 입력하세요 [이전 :0] : ");
-			int num = sc.nextInt();
+			while(true) {
+				try {
+					System.out.print("환불 승인할 가구의 번호를 입력하세요 [이전 :0] : ");
+					num = sc.nextInt();
+					break;
+				}catch(Exception e) {
+					sc = new Scanner(System.in);
+					System.out.println("숫자로 입력해주세요");
+				}
+			}
 			if(num == 0) {
-				MenuImpl.getInstance().hostOrderMenu();
+				return;
 			}else if(Refund.getRefund().containsKey(num)) {
 				try {
 					Furniture clone = (Furniture) Refund.getRefund().get(num).clone();
@@ -158,10 +211,12 @@ public class HostImpl implements Host{
 				Refund.getRefund().remove(num);
 				Buy.getBuy().remove(num);
 				System.out.println("환불 처리 되었습니다.");
+			}else {
+				System.out.println("잘못된 번호입니다.");
 			}
 	}
 
-	@Override
+	@Override // 총매출액
 	public void saleTotal() {
 		System.out.println("결산 : " + sum + "원");
 		MenuImpl.getInstance().hostOrderMenu();
