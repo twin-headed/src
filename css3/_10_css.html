@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Z-index 속성 - 요소 쌓는 순서 정하기</title>
+<style>
+
+		#wrap {
+			position:relative;
+			width: 300px;
+			height: 300px;
+			border: 1px solid #ccc;
+		}
+		
+		/* 공통 */
+		.box{
+			position:absolute;
+			width: 100px;
+			height: 100px;
+			background: #0094ff;
+		}
+		
+		#box1 {
+			top: 0;
+			left: 0;
+			background: #ff6a00;
+			/* 맨아래 */
+			z-index:1;
+		}
+		
+		#box2 {
+			top: 20px;
+			left: 60px;
+			background: #0000ff;
+			/* 맨위 */
+			z-index:3;
+		}
+		
+		#box3 {
+			top: 40px;
+			left: 30px;
+			background: #00ff00;
+			/* 중간 */
+			z-index:2;
+		}
+		
+</style>
+</head>
+<body>
+
+	<h3>Z-index 속성 - 요소 쌓는 순서 정하기</h3>
+	<!-- 
+		Z-index 속성
+		. 요소 쌓는 순서 정하기
+		. z-index 값이 크면 값이 작은 요소보다 위에 쌓인다.
+		. z-index 값을 명시하지 않으면 1부터 시작해서 1씩 커진다.
+		. 무조건 맨 위에 쌓으려면 z-index:999; 또는 z-index:10000; 처럼 순서에 매우 큰 값을 사용한다.
+	 -->
+	 <!-- div : 주로 컨텐츠를 묶어 시각적 효과를 적용할 때, 즉 컨텐츠에 CSS를 적용할 때 사용 -->
+	<div id="wrap">
+		<div class="box" id="box1"> box1 </div>
+		<div class="box" id="box2"> box2 </div>
+		<div class="box" id="box3"> box3 </div>
+	</div>
+	
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>크래스 선택자, id선택자</title>
+<style>
+	.bluetext {
+		color: blue;	/* 글자색 */
+	}
+	.redtext {
+		color: red;	/* 글자색 */
+	}
+</style>
+</head>
+<body>
+
+<!--  중요
+클래스(class) 선택자, id 선택자
+. 공통점 : 요소의 특정 부분에만 스타일을 지정하겠다.
+. 차이점 : 클래스 선택자는 문서안에서 여러번 반복할 스타일이라면 클래스 선택자로 정의
+			.클래스이름 로 사용
+			id 선택자는 문서안에서 한번만 사용할 스타일이라면 id 선택자로 정의
+				(파운드) #id 로 사용
+ -->
+	<h3> 클래스 선택자 - 특정부분에 스타일 지정하기 </h3>
+	
+	<h2> 블루베리에 관한 연구 </h2>
+	
+	<h3 class="bluetext"> 블루베리와 항산화 효능 </h3>	
+	<p class="bluetext"> 블루베리는 항산화제.... 있다.</p>
+	
+<p>메사츄세츠 보스톤에 있는 <span class ="redtext">USDA 노화에 관한<br>
+인류 영양 연구센터 (the USDA Human Nutrition Research Center on
+Aging)</span>
+	</p>
+
+	<h3>블루베리와 노화</h3>
+	<p><span class="redtext">USDA 인류 영양 연구센터(the USDA Human
+Nutrition Research Center) </span> 신경과학자들은 ...... 발견하였습니다.
+	</p>
+</body>
+</html>

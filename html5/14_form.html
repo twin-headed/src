@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+		/* {속성명: 속성값} */
+		fieldset {
+			max-width : 450px;		/* 최대폭 */
+			margin: 15px  10px;		/*	상하여백:15px, 좌우여백:  */
+		}
+		
+		legend {
+			font-size: 16px;		/* 글자크기 */
+			font-weight: bold;		/* 글자굵기 : 굵게 */
+			color: blue;		/* 글자색 */
+		}
+		
+		label {
+			font-size: 14px;		/* 글자크기 */
+			font-weight: bold;		/* 글자굵기 : 굵게 */
+			width: 120px;
+		}
+		
+	   .reg {					/* id는 중복될수 없으나 클래스는 중복해서 줄수있다. */
+	   		font-size : 14px;
+	   		width : 40px;
+	   		font-width : bold;
+	   		text-align: right;	/*	문자정렬 */
+	   		margin-right : 10px;
+	   }
+</style>
+</head>
+<body>
+<h3>여러 데이터를 나열해서 보여주기</h3>
+
+<form action="next.jsp" method="post" >
+<fieldset>
+	<legend> 수강신청 </legend>
+	<table>
+		<tr>
+			<td><label class="reg" for="stdNum">학번</label></td>
+			<td><input type="number" id="stdNum" min="0" max="100" autofocus required></td>
+		</tr>
+		
+		<tr>
+			<td><label  class="reg" for="stdName">이름</label></td>
+			<td><input type="text" id="stdName" size="20"></td>
+		</tr>
+		
+		<tr>
+			<td><label class="reg"  for="major">학과</label></td>
+			<td>
+				<select size="5" id="major" multiple> 	 <!--5개씩 보여준다. multiple : 동시에 여러개 선택-->
+					<optgroup label="공과대학">	<!-- optgroup: 옵션끼리 묶기  -->
+						<option value="computer">컴퓨터공학과</option>
+						<option value="multimedia">멀티미디어학과</option>
+						<option value="elctro">전기전자공학</option>
+						<option value="chemistry">화학공학과</option>
+						<option value="machine">기계공학</option>
+						<option value="information">정보통신학과</option>
+					</optgroup>
+					
+					<optgroup label="인문대학">
+						<option value="kor">국문학과</option>
+						<option value="eng">영문학과</option>
+						<option value="phil">철학과</option>
+						<option value="china">중국어학과</option>
+						<option value="japan">일본어학과</option>
+					</optgroup>
+				</select>
+			</td>
+		</tr>
+	</table>
+</fieldset>
+
+<fieldset>
+	<legend>progress 태그 - 진행상태 보여주기</legend>
+	<table>
+		<tr>
+			<!-- 전체 60초 중에서 50초 진행 -->
+			<td><label>10초남음</label></td>
+			<td><progress value="50" max="60"></progress></td>
+		</tr>
+		
+		<tr>
+			<td><label>진행률 30%</label></td>
+			<td><progress value="30" max="100"></progress></td>
+		</tr>
+		
+		<tr>
+			<!-- meter : 전체크기 중에서 얼마나 차지하는지를 표현할때 사용
+					예) 하드디스크 사용량, 유권자 투표율 등
+			 -->
+			<!-- 전체크기 1을 기준으로 0.7만큼 차지한다. -->
+			<td><label> 점유율 70% </label></td>
+			<td><meter value="70%" max="100"></meter></td>
+		</tr>
+		
+		<tr>
+			<!-- meter : 전체크기 중에서 얼마나 차지하는지를 표현할때 사용
+					예) 하드디스크 사용량, 유권자 투표율 등
+			 -->
+			<!-- 전체크기 1을 기준으로 0.7만큼 차지한다. -->
+			<td><label> 점유율 0.7% </label></td>
+			<td><meter value="0.7%"></meter></td>
+		</tr>
+		
+		<tr>
+			<!-- 전체크기 100을 기준으로 70만큼 차지한다. -->
+			<td><label> 점유율 70% </label></td>
+			<td><meter value="70%" max="100"></meter></td>
+		</tr>
+		
+		<tr>
+			<!-- 전체크기(min~max)는 1024~10240이며 high값보다 3072보다 현재값(value)이 더 초과 -->
+			<td><label>트래픽 초과</label></td>
+			<td><meter min="1024" max="10240" low="2048" high="3072" value="4000"></meter></td>
+		</tr>
+		
+		<tr>
+			<!-- 전체 1중에서 현재 0.5를 차지하고 있으며, 적정도를 0.8로 설정 -->
+			<td><label> 적절한 트래픽 </label></td>
+			<td><meter optimum="0.8" value="0.5"></meter></td>
+		</tr>
+		
+		<tr>
+			<td></td>
+			<td></td>
+		</tr>
+	
+	
+		</table>
+	
+</fieldset>
+
+</form>		
+</body>
+</html>

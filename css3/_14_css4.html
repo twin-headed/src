@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	/* 형제 선택자
+		형제 요소들에 스타일 적용
+		인접 형제 선택자와 다른 점은 모든 형제 요소에 다 적용된다는 것 
+		h1~p {형식}
+	*/
+	p~ul {
+			color: blue;
+			font-weight:bold;
+			border: 1px dotted blue;
+		}
+</style>
+</head>
+<body>
+		<h2>  연결선택자 - 4.모든 형제 요소에 스타일 적용하기 </h2>
+		
+		<header><h3> 예약방법 및 요금</h3></header>
+		
+		<section id="container">
+			  <p> 끌레르 펜션에 예약하려면? </p>
+				
+			  <ul>	<!-- 속성적용 -->
+			  		<li>직접 통화</li>
+			  		<li>문자남기기</li>
+			  </ul>
+								
+				<ul><!-- 속성적용 -->
+					<li>1인 : 30,000원</li>
+					<li>2인 : 60,000원</li>
+					<li>3인 : 80,000원</li>
+					<li>4인 : 100,000원</li>
+				</ul>
+		
+		</section>
+</body>
+</html>

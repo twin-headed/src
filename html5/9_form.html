@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>로그인 폼</title>
+<style>
+		/* {속성명: 속성값} */
+		ul {
+			list-style-type: none;	/* 불릿 없앰 */
+		}
+		
+		fieldset {
+			max-width : 350px;		/* 최대폭 */
+			margin: 15px  10px;		/*	상하여백:15px, 좌우여백:  */
+		}
+		
+		legend {
+			font-size: 16px;		/* 글자크기 */
+			font-weight: bold;		/* 글자굵기 : 굵게 */
+			color: blue;		/* 글자색 */
+		}
+		
+		label {
+			font-size: 14px;		/* 글자크기 */
+			font-weight: bold;		/* 글자굵기 : 굵게 */
+			width: 120px;
+		}
+</style>
+</head>
+<body>
+		<h3> 로그인 </h3>
+		
+		<!-- action="이동할 페이지" -->
+		<!-- method="post"인 경우는 데이터 전송시 입력한 값들이 URL에 노출되지 않는다. -->
+		<!-- method="get"인 경우는 데이터 전송시 입력한 값들이 URL에 노출된다. -->
+		
+		<form action="login_next.jsp" method="post">
+			<fieldset>
+				<legend> 로그인 정보 </legend>
+						<ul>
+								<li>	&nbsp;&nbsp;
+									<label for="userId"> 아이디 </label>
+									<input type="text" id="userId"><br>
+								</li>
+								
+								<li>
+									<label for="userPwd"> 비밀번호 </label>
+									<input type="password" id="userPwd"><br>
+								</li>
+								
+								<li>
+									<!-- div : 주로 컨텐츠를 묶어 시각적인 효과(CSS 적용)를 적용할 때 사용 -->
+									<div align="center"> <input type="submit" value="로그인"> </div>
+								</li>					
+						</ul>
+			</fieldset>
+		</form>
+</body>
+</html>

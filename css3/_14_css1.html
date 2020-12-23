@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>12장. 연결선택자</title>
+<style>
+		/* 연결선택자 
+				1. 하위선택자 - 지정한 모든 하위 요소에 스타일 적용하기(자식과 손자들)
+				형식 : 상위요소 하위요소(속성:속성값;,...)
+		*/
+		#container ul{
+			border: 1px dotted blue;		
+		}
+</style>
+
+</head>
+<body>
+
+		<h2> 12장. 연결선택자 - 1. 하위선택자 - 지정한 모든 하위 요소에 스타일 적용하기(자식과 손자들) </h2>
+		
+		<header><h3> 예약방법 및 요금</h3></header>
+		
+		<section id="container">
+				<p> 끌레르 펜션에 예약하려면? </p>
+				
+				<ul>
+						<li> 예약방법
+							  <ul>
+							  		<li>직접 통화</li>
+							  		<li>문자남기기</li>
+							  </ul>
+						</li>
+						
+						<li> 요금
+								<ul>
+									<li>1인 : 30,000원</li>
+									<li>2인 : 60,000원</li>
+									<li>3인 : 80,000원</li>
+									<li>4인 : 100,000원</li>
+								</ul>
+						</li>
+				</ul>
+		
+		
+		</section>
+		
+
+</body>
+</html>

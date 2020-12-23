@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>라디오 / 체크박스</title>
+<style>
+		/* {속성명: 속성값} */
+		fieldset {
+			max-width : 350px;		/* 최대폭 */
+			margin: 15px  10px;		/*	상하여백:15px, 좌우여백:  */
+		}
+		
+		legend {
+			font-size: 16px;		/* 글자크기 */
+			font-weight: bold;		/* 글자굵기 : 굵게 */
+			color: blue;		/* 글자색 */
+		}
+		
+		label {
+			font-size: 14px;		/* 글자크기 */
+			font-weight: bold;		/* 글자굵기 : 굵게 */
+			width: 120px;
+		}
+</style>
+</head>
+<body>
+	<h3> 라디오 / 체크박스 </h3>
+
+
+<form action="register_next.jsp" method="post">
+
+<fieldset>
+
+	<legend>수강과목<small>(1과목 선택가능)</small></legend>
+	<table>
+		<tr>
+			<td><label><input type="radio" name="speaking" value="Low" checked> 영어회화(초급) </label></td>
+		</tr>
+		
+		<tr>
+			<td><label><input type="radio" name="speaking" value="middle">영어회화(중급)</label></td>		<!-- name을 같게 해야한다!!  -->
+		</tr>
+		
+		<tr>
+			<td><label><input type="radio" name="speaking" value="high">영어회화(고급)</label></td> 
+		</tr>
+	</table>
+</fieldset>
+
+<fieldset>
+		<legend> 관심분야<small>다수 선택가능</small></legend>
+			<table>
+				<tr>
+					<td><label><input type="checkbox" name="language" value="grammer" checked>문법</label></td>
+				</tr>
+				
+				<tr>
+					<td><label><input type="checkbox" name="language" value="voca">어휘</label></td>
+				</tr>
+				
+				<tr>
+				
+				<td><label><input type="checkbox" name="language" value="conversation">회화</label></td>
+				
+				</tr>
+				
+				<tr>
+						<td><label><input type="checkbox" name="language" value="listening">듣기</label></td>
+				</tr>
+			</table>
+</fieldset>
+
+<fieldset>
+	<legend> 선호색상 </legend>
+	<table>
+		<tr>
+			<td><label><input type="color" id="preColor" value="#ff0000"></label></td> 
+		</tr>
+	</table>
+</fieldset>
+</form>
+</body>
+</html>

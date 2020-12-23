@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>position - absolute 속성</title>
+<style>
+	/* 기준이 되는 부모 요소 : 테두리 */
+	#wrap {
+			position: relative;
+			width: 300px;
+			height: 300px;
+			border: 1px solid #ccc;
+	}	
+	/* 위치를 지정할 작은 상자 */
+	.box {
+		position: absolute;
+		width: 50px;
+		height: 50px;
+		background: #0094ff;
+	}
+	
+	/* 왼쪽 위  */
+	#box1 {
+			top:0;
+			left:0;
+	}
+	
+	/* 오른쪾 위 */
+	#box2 {
+			top:0;
+			right:0;
+	}	
+	/* 왼쪽 아래 */
+	#box3 {
+			bottom:0;
+			left:0;
+	}
+	/* 오른쪽 아래 */
+	#box4 {
+			bottom:0;
+			right:0;
+	}
+	/* 중심 */
+	#box5 {
+			top:100px;
+			left:100px;
+	}
+	
+</style>
+</head>
+<body>
+		<h3>position - absolute 속성</h3>
+		
+		<!-- 
+				position -absoulte 속성
+			 . 문서의 흐름과는 상관없이 원하는 위치에 요소를 배치
+			 . 요소의 위치는 가장 가까운 부모 요소나 조상 요소중 position:relative인 요소
+			 . left, top, right, bottom 속성을 사용해 네 모서리에서 얼마나 떨어져있는지 지정
+		
+		
+		 -->
+		
+		
+		<div id="wrap">
+			<div class="box" id="box1">box1</div>
+			<div class="box" id="box2">box2</div>
+			<div class="box" id="box3">box3</div>
+			<div class="box" id="box4">box4</div>
+			<div class="box" id="box5">box5</div>
+		</div>
+		
+</body>
+</html>

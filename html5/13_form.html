@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>폼과 관련된 태그들</title>
+<style>
+		/* {속성명: 속성값} */
+		fieldset {
+			max-width : 450px;		/* 최대폭 */
+			margin: 15px  10px;		/*	상하여백:15px, 좌우여백:  */
+		}
+		
+		legend {
+			font-size: 16px;		/* 글자크기 */
+			font-weight: bold;		/* 글자굵기 : 굵게 */
+			color: blue;		/* 글자색 */
+		}
+		
+		label {
+			font-size: 14px;		/* 글자크기 */
+			font-weight: bold;		/* 글자굵기 : 굵게 */
+			width: 120px;
+		}
+</style>
+
+<script type="text/javascript">
+	function zipSearch(){
+		alert("우편번호를 입력하세요.~~")
+	}
+</script>
+</head>
+
+
+<body>
+<h3>폼과 관련된 태그들</h3>
+<form action="next.jsp" method="post">
+	<fieldset>
+		<legend> 검색 </legend>
+		<table>
+			<tr>
+				<td><input type="search"> </td>
+				<td><input type="submit" value="검색"> <input type="reset" value="다시입력"> </td>
+			</tr>
+		</table>
+	</fieldset>
+	
+<fieldset>
+		<legend>우편번호 검색</legend>
+		<table>
+			<tr>
+				<td colspan="2">	
+						<input type="button" value="우편번호 검색" onclick="zipSearch();">			<!-- 버튼은 버튼일뿐이기때문에 아무 효과가 없다. onclick이벤트를 태우려면 type이 버튼이어야한다.-->
+						<input type="reset" value="다시 입력">
+				</td>
+			</tr>
+		</table>
+</fieldset>
+
+<fieldset>
+	<legend>첨부하기</legend>
+		<table>
+			<tr>
+				<td><label for="attachFile">첨부파일</label></td>
+				<td><input type="file" id="attachfile"></td>	<!-- 파일열기 창에서 파일을 선택해서 가져온다.  -->
+			</tr>
+		</table>
+</fieldset>
+
+<fieldset>
+	<legend> 조회 기간 선택 </legend>
+	<table>
+		<tr>
+				<td><label for="start"> 시작일 </label></td>
+				<td><input type="date" id="start"> ~ </td>
+				<td><label for="end"> 종료일 </label></td>
+				<td><input type="date" id="end"></td>
+		</tr>
+		
+		<tr>
+			<td><label for="startWeek">개강주</label></td>
+			<td><input type="week" id="startWeek"></td>
+		</tr>
+		
+		<tr>
+			<td><label for="startTime">강의시간</label></td>
+			<td><input type="time" id="startTime"></td>
+		</tr>
+	</table>
+</fieldset>
+
+<fieldset>
+		<legend>대관시간</legend>
+		<h5>선택(오늘)</h5>
+		
+		<table>
+			<tr>
+				<td><label>시작<input type="time" value="09:00" id="start"></label></td>
+				<td><label>종료<input type="time" value="18:00" id="end"></label></td>
+			</tr>
+		</table>
+		
+		<h5>선택(다른 날짜)</h5>	
+		<table>
+			<tr>
+				<td><label>시작<input type="datetime-local" value="2020-12-22T09:00" id="Dstart"></label></td>
+				<td><label>종료<input type="datetime-local" value="2020-12-28T18:00" id="Dend"></label></td>
+			</tr>
+		</table>
+</fieldset>
+
+<fieldset>
+	<legend> 지원현황 </legend>
+	<table>
+		<tr>
+			<td><label>참여인원<small>(최대10명)</small></label></td>
+			<td><input type="number" id="member" value="1" min="0" max="10" step="1"></td>
+		</tr>
+		
+		<tr>
+			<td><label>지원물품<small>(1인당5개)</small></label></td>
+			<td><input type="number" id="stuffs" min="0" max="50" step="5"></td>
+		</tr>
+		
+		<tr>
+			<td><label>희망단계<small>(상,중,하)</small></label></td>
+			<td><input type="range" id="level" value="1" min="1" max="3">s</td>
+		</tr>
+		
+	</table>
+
+</fieldset>
+
+</form>
+</body>
+</html>

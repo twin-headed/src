@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>8장. display 속성</title>
+<style>
+
+	#inline img  { 		/* 상위요소 하위요소 공백으로 구분해서 접근 */
+		/* 원래 img display 속성 : inline이다. 지정을 안하면 디폴트로 인라인 */
+		/* 항목을 옆으로 한줄로 배치 */
+		/* 요소간의 여백 : 10px */
+		display : inline;
+		margin : 10px;		/* margin  요소와 요소간의 여백(바깥족 여백) */
+		/* padding : 콘텐츠 내용과 테두리 사이의 여백(안쪽 여백) */
+	} 
+	
+	#block img {
+		/* 항목을 아래로 한줄로 배치 */
+		/* 요소간의 여백 : 10px */
+		display : block;
+		margin : 10px;
+	}	
+	   
+</style>
+
+</head>
+<body>
+
+	<h3> display 속성 - 화면배치방법 결정하기 </h3>
+	<!-- 중요 
+	- 블록 레벨(block) 요소
+	 .  요소를 삽입했을 때 혼자 한줄을 차지하는 요소
+	 .	요소의 너비가 100%
+	 .  예) <div>, <p>....
+	 	
+	- 인라인(inline) 레벨 요소
+	. 줄을 차지하지 않는 요소
+	. 화면에 표시하는 콘텐츠만큼만 영역을 차지하고 나머지 공간에는 다른 요소가 올 수 있음
+	. 예) <img>, <strong> 등
+	-->
+		
+	<inline 속성><br>
+	<div id="inline">
+		<img src="../images/8장/pic1.jpg" width="300" height="300">
+		<img src="../images/8장/pic2.jpg" width="300" height="300">
+		<img src="../images/8장/pic3.jpg" width="300" height="300">
+	</div>
+	
+	<block 속성><br>
+	<div id="block">
+		<img src="../images/8장/pic1.jpg" width="300" height="300">
+		<img src="../images/8장/pic2.jpg" width="300" height="300">
+		<img src="../images/8장/pic3.jpg" width="300" height="300">
+	</div>
+
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>position-relative 속성</title>
+<style>
+	/* 기준이 되는 부모 요소 */
+	div {
+		width : 100px;
+		height : 100px;
+		background: red;
+	}
+	/* 위치를 지정할 작은 상자 */
+	.box0 {
+		float: left;/* 왼쪽에 배치 */
+		width: 100px;
+		background:#0094ff;
+		margin-right:10px;
+		padding:20px;
+	}
+	
+	.box1 {
+		float: left;/* 왼쪽에 배치 */
+		width: 100px;
+		background:#ff00ff;
+		margin-right:10px;
+		padding:20px;
+	}	
+	
+	.box2 {
+		position: relative; /* 무조건 바로 이전 요소와 관계 */
+		left: 50px;			/* box1을 기준으로 왼쪽으로 50px 이동 */
+		top: -30px;			/* box1을 기준으로 아래쪽으로 30px 이동 */
+		right:-30px;
+		bottom: -50px;
+		float: left;
+		width: 300px;
+		background:#00ff00;
+		padding:100px;
+	}
+	
+			
+</style>
+</head>
+<body>
+		<h2> position - relative 속성</h2>
+		<!--  
+		relative 속성
+		. 자연스럽게 배치
+		. 고정되어 있지 않고 다른 요소에 의해 바뀔수 있다.
+		. 상대적인 위치를 사용하기 때문에 다른 요소와 조화를 이룬다.
+		. left나 top 속성을 이용해 요소의 위치를 옯길 수도 있다.
+		-->
+	
+	<h3> position- relative 속성</h3>
+	<div class="box0"> 박스0 </div>
+	<div class="box1"> 박스1 </div>
+	<div class="box2"> 박스2 </div>
+	
+</body>
+</html>

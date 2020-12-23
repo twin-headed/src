@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>로그인 양식</title>
+<style>
+		/* {속성명: 속성값} */
+		ul {
+			list-style-type: none;	/* 불릿 없앰 */
+		}
+		
+		fieldset {
+			max-width : 350px;		/* 최대폭 */
+			margin: 15px  10px;		/*	상하여백:15px, 좌우여백:  */
+		}
+		
+		legend {
+			font-size: 16px;		/* 글자크기 */
+			font-weight: bold;		/* 글자굵기 : 굵게 */
+			color: blue;		/* 글자색 */
+		}
+		
+		label {
+			font-size: 14px;		/* 글자크기 */
+			font-weight: bold;		/* 글자굵기 : 굵게 */
+			width: 120px;
+		}
+</style>
+</head>
+<body>
+<!-- 중요
+		<placeholder> : 힌트 표시하기
+		<required> : 필수항목 지정하기
+		<autofocus> : 폼이 실행하자 마자 원하는 항목의 입력박스에 커서표시하기
+		<form action = "이동할 페이지"> 이동할 페이지가 없으면 404에러
+ -->
+	
+<form action="login_next.jsp"method="post">
+		<fieldset>
+				<legend> 로그인 정보 </legend>
+		
+			<table>
+					<tr>			
+							<th align="right"><label for="userID"> 아이디 </label></th>
+							<td><input type="text" id="userID" size="20" placeholder="아이디 입력"></td>
+					</tr>
+					
+					<tr>
+							<th align="right"><label for="userPWD"> 비밀번호 </label></th>
+							<td><input type="password" id= "userPWD" size="20" placeholder="비번입력">
+					</tr>
+					
+					<tr>
+							<th align="right"><label for="reuserPWD"> 비밀번호 </label></th>
+							<td><input type="password" id= "reuserPWD" size="20" placeholder="비번확인">
+					</tr>
+					
+					<tr>
+							<td colspan="2"><br>
+									<div align="center">
+											<input type="submit" value="로그인">
+											<input type="reset"	value="취소">
+									</div>
+							</td>
+					</tr>
+			</table>
+		</fieldset>
+</form>
+</body>
+</html>
