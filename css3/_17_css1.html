@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- 반응형 웹디자인 : 사용자의 접속 환경에 맞추어 사이트 레이아웃을 자연스럽게 바꾸어 보여주는 웹디자인
+		- 여러 기기에 맞는 사이트를 별도로 제작하지 않고,
+		화면크기에 '반응'해 화면요소들을 자동으로 바꾸어 사이트를 구현하는 것
+		- 브라우저 창의 너비를 조절할 때마다 표시되는 컬럼 갯수가 달라진다.
+		즉 PC나 태블릿, 스마트폰의 웹브라우저 화면 크기에 따라 사이트 레이아웃이 바뀌도록 한다.
+		- 뷰포트 지정하기, 미디어쿼리 지정하기
+		
+		- 크롬에서 확인 : F12 개발자도구 - 맨위 오른쪽 - 왼쪽 2번째 디바이스 툴바 클릭 - 왼쪽 Responsive에서 각각 기기별 테스트
+		
+ -->
+ <!-- meta name="viewport" content="width=디바이스 화면 너비, initial-scale=초기화면 배율" -->
+<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
+<title>14장. 반응형 웹디자인</title>
+<style>
+	nav ul li {
+		display: inline-block;
+		margin: 20px; /* 요소와 요소사이의 공백(바깥쪽 여백) : 4면 20px*/
+	}
+	
+	ul {
+		background: #6741f4;	/* 배경색 */
+		text-align: center; 		/* 가운데 정렬 */
+	}
+	
+	a {
+	text-decoration:none;			/* 밑줄 없애기 */
+	color:white;			/* 글자색 : 흰색 */
+	font-weight:bold;			/* 굵게 */
+	}
+	
+</style>
+</head>
+<body>
+	<nav>
+		<ul>
+			<li><a href="#">애완견 종류</a>
+			<li><a href="#">입양하기</a>
+			<li><a href="#">건강돌보기</a>
+			<li><a href="#">더불어살기</a>
+		</ul>
+	</nav>
+</body>
+</html>

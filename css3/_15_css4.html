@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>속성 선택자</title>
+<style>
+/*		
+		[속성 |= 값] 선택자
+		4.특정 값이 포함된 속성을 가진 요소를 찾아 스타일 적용. 
+						- 하이픈으로 연결해 한 단어 값을 이루는 요소에도 적용
+*/
+	a[title |= "us"] {
+		background: url("../images/12장/us.png") no-repeat left center;
+		padding: 5px 25px;
+		list-style-type: none;
+	}
+	
+	a[title |= "jp"] {
+		background: url("../images/12장/jp.png") no-repeat left center;
+		padding: 5px 25px;
+		list-style-type: none;
+	}
+	
+</style>
+</head>
+<body>
+
+	<h3>4.[속성 |= 값] 특정 값이 포함된 속성을 가진 요소를 찾아 스타일 적용 하이픈으로 연결해 한 단어 값을 이루는 요소에도 적용</h3>
+		<ul>
+		<li><a href="#" title="us">메뉴 1</a><li>
+		<li><a href="#" title="us-aef">메뉴 2</a><li>
+		<li><a href="#" title="jp">메뉴 3</a><li>
+		<li><a href="#" title="jp-aef">메뉴4</a></li>
+	</ul>
+</body>
+</html>

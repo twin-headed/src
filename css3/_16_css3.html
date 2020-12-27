@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>nth-child(n)와 :nth-last-child(n)</title>
+<style>
+
+/*
+	:nth-of-type(n) : 앞에서부터 n번째 요소에 스타일 적용
+	:nth-last-of-type(n) : 뒤에서부터 n번째 요소에 스타일 적용
+	
+	div p:nth-child(3) -> div 요소중에서 3번째 자식요소인 p요소에 스타일 지정
+	
+	div p:nth-child(odd), div :nth-child(2n+1) -> div 요소중에서 홀수번째 자식요소인 p요소에 스타일 지정
+	div p:nth-child(even), div :nth-child(2n) -> div 요소중에서 짝수번째 자식요소인 p요소에 스타일 지정
+*/
+/* 홀수번째 lightgray  */
+
+td{
+	width:200px;
+	height:200px;
+	text-align:center;
+	bordercolor:green;
+}
+
+table tr:nth-child(odd) {
+	background:lightgray;
+}
+
+/* 짝수번째 lightblue  */
+
+table tr:nth-child(even) {
+	background:lightblue;
+}
+
+
+</style>
+</head>
+<body>
+	
+		<h3>건강에 좋은 건강 식품 - 구조 가상 클래스</h3>
+		
+		<table border="1">
+			<tr>
+				<td>a</td>
+			</tr>
+			<tr>
+				<td>b</td>
+			</tr>
+			<tr>
+				<td>c</td>
+			</tr>
+			<tr>
+				<td>d</td>
+			</tr>
+			<tr>
+				<td>e</td>
+			</tr>
+			<tr>
+				<td>f</td>
+			</tr>
+			<tr>
+				<td>g</td>
+			</tr>
+			<tr>
+				<td>h</td>
+			</tr>
+			<tr>
+				<td>i</td>
+			</tr>
+			<tr>
+				<td>j</td>
+			</tr>
+		</table>
+	
+</body>
+</html>

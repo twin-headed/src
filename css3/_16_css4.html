@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+
+/* 
+	:first-child - 첫번째 자식 요소스타일 적용
+	:last-child - 마지막 자식 요소에 스타일 적용
+ */
+	ul.navi li{
+		list-style-type:none;											/* 불릿 없앰 */
+		display:block;											/* 세로 영역으로 보여줘라 */
+		width:120px;											/* 너비 120px */
+		height:50px;					 							/* 높이 50px */
+		float:left;					 								/* 왼쪽으로 배치 */
+		text-align:center;					 					/* 문자를 가운데로 정렬 */
+		border:1px solid green;							/* 테두리 1px 실선 녹색  */
+		box-shadow: 1px 1px #bbb;					 	/* 박스 그림자 1px 1px #bbb */
+ 	}
+ 	ul.navi li:first-child {
+ 		border-top-left-radius:1em;
+ 		border-bottom-left-radius:1em;
+ 	}
+ 	ul.navi li:last-child {
+ 		border-top-right-radius:1em;
+ 		border-bottom-right-radius:1em;
+ 	}
+ 	
+</style>
+
+</head>
+<body>
+	<h3> :first-child, :last-child </h3>
+
+	<div>	
+		<ul class="navi">
+			<li class="home"><a href="#">HOME</a></li>
+			<li class="html"><a href="#">HTML5</a></li>
+			<li class="css"><a href="#">CSS</a></li>
+			<li class="jquery"><a href="#">JQuery</a></li>
+		</ul>
+	</div>
+</body>
+</html>

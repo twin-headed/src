@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>14장. 미디어쿼리</title>
+<style>
+/* 
+	미디어쿼리 : 사이트에 접속하는 장치에 따라 특정한 CSS 스타일을 적용할 수 있다.
+	
+	- 브라우저 창의 너비를 조절할 때마다 화면에 표시되는 컬럼수가 달라진다.
+	즉 PC나 태블릿, 스마트폰의 웹브라우저의 화면 크기에 따라 사이트 레이아웃이 바뀌도록 한다.
+	사용자가 어떤 미디어를 사용하는 거에 따라 사이트의 형태가 바뀌도록 CSS를 작성하는 방법을 미디어쿼리라고 한다.
+	
+	- media 유형 : screen -> 컴퓨터 스크린(스마트폰 스크린 포함)
+						all -> 모든 유형
+						
+	@media [only | not] 미디어유형 and (min-width:200px) and (max-width:360px) {css 적용}
+	예) @media [only | not] 미디어유형 and (min-width:200px) and (max-width:360px) (..)
+ */
+
+	body {
+		background: url("../images/5장/sydney.png") no-repeat fixed;
+		background-size: cover;
+	
+	}
+
+	@media screen and (max-width:1000px) {
+		body {
+				background: url("../images/1장/prod1.jpg") no-repeat fixed;
+				background-size: cover;
+		}
+	}
+	
+	@media screen and (max-width:800px) {
+		body {
+				background: url("../images/1장/prod2.jpg") no-repeat fixed;
+				background-size: cover;
+		}
+	}
+	
+	@media screen and (max-width:600px) {
+		body {
+				background: url("../images/1장/prod2.jpg") no-repeat fixed;
+				background-size: cover;
+		}
+	}
+		
+	
+	}
+</style>
+</head>
+<body>
+
+</body>
+</html>

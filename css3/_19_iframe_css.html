@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>iframe 예제</title>
+</head>
+<body>
+	<!-- 
+		  <iframe> 태그 - 외부문서 삽입하기
+		  - 웹 문서안에 다른 웹문서를 가져와서 표시하는 것을 인라인 프레임이라고 한다.
+		  <iframe> 태그 : 인라인 프레임을 삽입하는 태그
+		  
+		  - 기본형<iframe src="삽입할 문서 주소" [속성="속성값"]></iframe>
+		  src : 프레임에 표시할 문서의 주소 지정
+		  name : 인라인 프레임의 이름이다.
+		  		다른 영역에서 링크를 걸수 있게 프레임에서 이름을 지정할 때 사용하는 속성이다.
+		  		다른 영역에서는 <a> 태그의 <target> 속성을 사용하여 원하는 프레임을 선택한다.
+		  	target : iframe의 name 중의 하나
+	 -->
+
+	<!-- s
+		 <div> 	태그 : 웹브라우저의 전체 공간에 대해 분할한다.
+					이름 "블록(block) 형식(세로)으로 분할한다."라고 한다.
+		<span> 태그 : 웹브라우저의 일부 공간만 분할한다.
+			이름 "인라인(inline) 형식(가로)으로 분할한다."라고 한다.
+	 -->
+	 
+	 <h3> iframe 예제 </h3>
+	 
+	 
+	 <div style="background-color:#ffff00;">
+	 
+			<span>
+					<a href="if_lee.html" target="if_left">이효리</a> <!--  좌 -->
+			</span>
+			
+			<span>
+					<a href="if_hong.html" target="if_left">홍진영</a> <!--  우 -->
+			</span>	 
+			
+			<span>
+					<a href="if_bts.html" target="if_left">방탄소년단</a> <!-- 좌 -->
+			</span>	 
+			
+			<span>
+					<a href="if_iu.html" target="if_left">아이유</a> <!-- 우  -->
+			</span>	 	 
+			
+			<span>
+					<a href="http://www.ikosmo.co.kr/" target="if_right">네이버</a> <!-- 우  -->
+			</span>	 	 
+			
+	</div>
+			
+	 <iframe src="if_main.html" width="500" height="600" name="if_left" frameborder="1"></iframe>	<!-- 왼쪽 영역-->
+	 <iframe src="if_main2.html" width="300" height="600" name="if_right" frameborder="1"></iframe>	<!-- 오른쪽 영역-->
+	 
+	 
+	 
+</body>
+</html>
