@@ -1,0 +1,132 @@
+1. mybatis 계정 생성
+생성
+create user mybatis_76 identified by tiger default tablespace users;
+권한부여
+grant connect, resource, create view to mybatis_76;
+grant create view to mybatis_76;
+언락
+alter user mybatis_76 account unlock;
+
+2. 테이블 생성
+
+-- 1) user 테이블 생성
+DROP TABLE member CASCADE CONSTRAINTS;
+CREATE TABLE member(
+    user_id     NUMBER(2) primary key,
+    user_name   VARCHAR2(20),
+    reg_date    DATE
+);
+
+INSERT INTO member(user_id, user_name, reg_date) VALUES(1, 'john', sysdate);
+INSERT INTO member(user_id, user_name, reg_date) VALUES(2, 'terry', sysdate);
+COMMIT;
+
+SELECT * FROM member;
+
+--2) address 주소 테이블 생성
+DROP TABLE address CASCADE CONSTRAINTS;
+
+CREATE TABLE address(
+    user_id     NUMBER(2),
+    address     VARCHAR2(50),
+    CONSTRAINT  address_user_id_fk FOREIGN KEY(user_id) REFERENCES member(user_id)
+);
+
+INSERT INTO address(user_id, address) VALUES(1, '서울시 금천구 가산동');
+INSERT INTO address(user_id, address) VALUES(1, '서울시 강남구 대치동');
+COMMIT;
+
+SELECT * FROM address;
+
+-- 3). posts 게시글 테이블 생성
+DROP TABLE posts CASCADE CONSTRAINTS;
+CREATE TABLE posts(
+    post_id       NUMBER(3) PRIMARY KEY,
+    post_title    VARCHAR2(30),
+    post_content  VARCHAR2(200),
+    user_id    NUMBER(2),
+    CONSTRAINT  posts_user_id_fk FOREIGN KEY(user_id) REFERENCES member(user_id)
+);
+
+INSERT INTO posts(post_id, post_title, post_content, user_id) 
+    VALUES (100, '평화', '비핵화', 1);
+INSERT INTO posts(post_id, post_title, post_content, user_id) 
+    VALUES (101, '사랑', '너와 나의 연결고리', 1);
+INSERT INTO posts(post_id, post_title, post_content, user_id) 
+    VALUES (102, '파멸', '핵전쟁', 1);
+INSERT INTO posts(post_id, post_title, post_content, user_id) 
+    VALUES (103, '회식', '삼겹살리필', 2);
+INSERT INTO posts(post_id, post_title, post_content, user_id) 
+    VALUES (104, '플젝', '성취감', 2);
+INSERT INTO posts(post_id, post_title, post_content, user_id) 
+    VALUES (105, '소확행', '칼퇴', 2);
+INSERT INTO posts(post_id, post_title, post_content, user_id) 
+    VALUES (106, '파멸', '너와 나의 핵전쟁 연결고리', 2);
+COMMIT;
+
+SELECT * FROM posts;
+SELECT m.user_id, m_user_name, m.reg_date, p.post_title, p.post_content
+    FROM member m JOIN posts p
+    ON m.user_id = p.user_id
+WHERE m.user_name = 'john';
+
+
+3. 플젝생성
+	new Spring Legacy Project > 프로젝트명 입력, Spring MVC Project 선택 > 패키지명(3레벨 이상)입력
+	==> 패키지명 입력은 반드시 3레벨 이상을 해야 하며, 3레벨이 컨텍스트명이 된다.
+	com.spring.mvc_mybatis
+	
+컨텍스트명 중복시 1. 플젝우클릭 > 속성 > Web Project Settings > context root도 수정
+			2. 톰캣 우클릭 > Add And Remove > 모두 선택후 remove all
+			3. 톰캣 실행
+			
+  - HomeController 실행 : 잘 작동되는지 확인
+	
+	- 패키지 생성
+	com.spring.mvc_Mybatis.controller
+	com.spring.mvc_Mybatis.ch01.vo
+	com.spring.mvc_Mybatis.ch01.service
+	com.spring.mvc_Mybatis.ch01.persistence
+	
+4. 컨넥션 풀 추가
+
+5. web.xml에 한글 안깨지도록 추가
+<!-- 한글 안깨지게 처리  -->
+	<filter>
+		<filter-name>encodingFilter</filter-name>
+		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+		
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+		
+		<init-param>
+			<param-name>forceEncoding</param-name>
+			<param-value>true</param-value>
+		</init-param>
+	</filter>
+	
+	<filter-mapping>
+		<filter-name>encodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	
+6.	1) 자바 설정
+
+	2) pom.xml에 버전 반영
+	
+	3) pom.xml에 Mybatis.jar 파일 설정
+	mvnrepository.com에서 4개의 라이브러리를 복사후 pom.xml에 등록하면,
+	maven 중앙 repository로부터 다운로드 후 빌드되어 Maven Dependencies(.m2.repository)에 저장된다.
+	
+	
+	
+7. Mapper 패키지 작성
+
+
+8. servlet-context.xml에 MyBatis 설정 추가
+
+9. Mapper 작성
+
+10. Controller, Service, DAOImpl 코드 작성 
