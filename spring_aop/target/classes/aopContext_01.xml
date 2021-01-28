@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop 
+		http://www.springframework.org/schema/aop/spring-aop-3.1.xsd">
+
+<!-- 방법1. xml을 이용한 AOP 설정 -->	
+<!-- 공통기능 (횡단관심)을 제공할 클래스를 빈으로 등록 -->
+<bean id="log" class="spring.mvc.aop.LogAop" /> <!-- LogAop 클래스명만 치고 컨트롤 스페이스바 하면 경로 쭉 나옴 -->
+<!-- execution(리턴타입 패키지경로.클래스명.메서드명 -->
+<aop:config>
+	<aop:aspect id="logger" ref="log">
+		<aop:pointcut id="allPointCut" expression="execution(* spring.mvc.aop.*.*(..))" /> <!-- 조인포인트 대상 : 핵심관심 패키지.메서드 -->	
+		<aop:before pointcut-ref="allPointCut" method="loggerAop"/> <!--method="횡단관심 LogAop의 메서드"  -->
+	</aop:aspect>
+</aop:config>
+
+<!-- 핵심관심 Member 정보를 DI-Setter Injection으로 주입 -->
+	<!-- Member member = new Member(); 
+		member.setId("hong");
+	-->
+	
+	<bean id="member" class="spring.mvc.aop.Member"> 
+		<property name="id" value="workout"></property>
+		<property name="pwd" value="choi"></property>
+		<property name="name" value="1234"></property>
+		<property name="hobby" value="moonsu"></property>
+	</bean>
+	
+	<bean id="worker" class="spring.mvc.aop.Worker"> 
+		<property name="companyName" value="workout"></property>
+		<property name="salary" value="50000"></property>
+		<property name="email" value="1234@aewf"></property>
+		<property name="position" value="ceo"></property>
+	</bean>
+
+</beans>
