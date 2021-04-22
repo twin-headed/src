@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<!-- 타임리프 템플릿 페이지 
+- html 태그에 네임스페이스 반드시 표기
+- xml 문법을 준수 : 단독태그도 '/'로 닫아주어야 함
+-->
+<html xmlns:th="http://www.thymeLeaf.org">
+<head>
+<meta charset="UTF-8"/>	<!-- 단독태그도 '/'로 닫는다.  -->
+<title>Insert title here</title>
+</head>
+<body>
+<h3>회원목록</h3>
+<table border="1">
+	<tr>
+		<th> 아이디 </th>
+		<th>  이름 </th>
+		<th> 생년월일 </th>
+		<th> email </th>
+		<th> 등록일 </th>
+	</tr>
+	<!-- th:each="개별변수:집합변수" 반복문 => 집합변수는 컨트롤러에서 넘겨준 변수 
+		단독으로 사용하면 안되며, 태그(ex:span) 안에 작성해야 한다.
+	-->
+	<tr th:each="vo:${list}">
+		<td><span th:text="${vo.id}"></span></td>
+		<td><span th:text="${vo.name}"></span></td>
+		<td><span th:text="${vo.jumin1}"></span></td>
+		<td><span th:text="${vo.jumin2}"></span></td>
+		<td><span th:text="${vo.hp}"></span></td>
+		<td><span th:text="${vo.email}"></span></td>
+		<td><span th:text="${vo.reg_date}"></span></td>
+	</tr>
+</table>
+
+</body>
+</html>

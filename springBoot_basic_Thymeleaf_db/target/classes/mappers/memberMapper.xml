@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mapper namespace="com.boot.springBoot_ThymeLeaf_db.persistence.MemberDAO">
+	<select id="list" resultType="com.boot.springBoot_ThymeLeaf_db.vo.MemberVO">
+		SELECT * FROM mvc_client_tbl
+	</select>
+</mapper>
