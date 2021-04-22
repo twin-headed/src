@@ -1,0 +1,16 @@
+<!-- src/main/resources/templates/hello.html -->
+
+<!DOCTYPE html>
+<!-- 반드시 xml namespace 지정 -->
+<html xmlns:th="http://www.thymeLeaf.org">
+<head>
+<meta charset="UTF-8" /> <!-- xml 문법을 따르므로 반드시 닫아주어야 한다. -->
+<title>Insert title here</title>
+</head>
+<body>
+<!-- th : 타임리프 태그의 요소 -->
+<!-- h3 th:text="${타임리프 변수}" 변수값을 텍스트로 출력함 -->
+<h3> 타임리프 템플릿 </h3>
+<h3 th:text="${message}"></h3>
+</body>
+</html>
