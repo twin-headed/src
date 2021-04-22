@@ -1,0 +1,103 @@
+몽고DB	MariaDB	  Firebase
+NoSQL
+Not Only SQL => SQL만을 사용하지 않는 데이터베이스 관리 시스템
+기존의 RDBMS의 한계를 극복하고자 만들어진 새로운 형태의 데이터저장소
+비정형데이터를 저장하기 위해 최적화된 저장 방법을 제공함
+종류 - MongoDB, Cassandra, Redis 등
+
+JSON 형태의 동적 스키마형 문서 
+Cross Flatform Document 지향 데이터베이스 시스템
+Document는 일정한 틀을 가지지 않음
+Document 내부의 Field 자료형 형식이 달라도 입력 가능하며,
+각 Document들은 모두 일관된 Field를 가지지 않아도 됨
+
+Table => Collection
+Record => Document
+
+2) 설치
+http://mongodb.com
+
+2-1) 실행 - 커맨드 실행
+
+cd C:\Program Files\MongoDB\Server\4.4\bin 이동후
+
+- 서버 실행파일(mongod.exe)
+mongod
+
+- 사용자 실행(mongo.exe)
+mongo
+
+2-2) 명령어
+-- DB 목록
+show dbs
+
+-- DB 생성
+use testdb
+
+-- 현재 사용중인 db 이름
+db 
+
+-- 전체 데이터베이스 몱
+
+///////////////////////////////////////////////////
+> db.memo.find()
+{ "_id" : 1, "writer" : "김태희", "memo" : "세번쨰 메모", "post_date" : ISODate("2021-04-21T08:23:54.189Z") }
+{ "_id" : 2, "writer" : "홍길동2", "memo" : "두번쨰 메모", "post_date" : ISODate("2021-04-21T08:23:40.901Z") }
+> db.memo.find((writer:"김태희"))
+uncaught exception: SyntaxError: missing ) in parenthetical :
+@(shell):1:20
+> db.memo.find({writer:"김태희"})
+{ "_id" : 1, "writer" : "김태희", "memo" : "세번쨰 메모", "post_date" : ISODate("2021-04-21T08:23:54.189Z") }
+///////////////////////////////////////////////////////////////////
+
+
+
+
+// 컬렉션 생성(테이블에 해당됨)
+db.createCollection("members")
+
+// 데이터를 입력하면서 동시에 컬렉션 생성
+db.members.insert({name:"홍길동", age:30})
+
+
+// 데이터 읽기
+// db.<collection 이름>.find(<검색조건>)
+db.members.find(name: "아이유")
+
+
+// 수정
+db.members.update({_id:2}, {$set:{name:"park", age:20)})
+
+// 오름차순 정렬
+db.members.find().sort({"age" : 1}) # age로 오름차순 정렬
+
+// 내림차순 정렬
+db.members.find().sort({"age": -1}) # age로 내림차순 정렬
+
+// Not Equals 검색
+// db.<collection명>.find({"<검색할 field>":{$ne::<기준값>}})
+db.members.find({"age":{$ne:20}})
+
+3) 프로젝트 생성
+스프링부트 + Web + 몽고DB
+한줄 게시판
+
+New > Spring Starter Project >spring-boot-mongoDB-board
+
+4)pom.xml
+
+몽고DB 라이브러리
+스프링 부트 web 라이브러리
+JSP / JSTL
+내장형 톰캣
+devtools - 설정, 클래스가 바뀌면 auto restart
+
+
+
+
+
+
+AWS
+스프링부트
+JUnit
+JPA
