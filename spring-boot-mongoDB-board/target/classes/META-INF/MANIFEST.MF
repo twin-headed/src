@@ -1,6 +1,10 @@
 Manifest-Version: 1.0
 Implementation-Title: spring-boot-mongoDB-board
 Implementation-Version: 0.0.1-SNAPSHOT
-Build-Jdk-Spec: 1.8
+Built-By: kosmo_16
+Implementation-Vendor-Id: com.example
+Build-Jdk: 1.8.0_241
+Implementation-URL: https://projects.spring.io/spring-boot/#/spring-bo
+ ot-starter-parent/spring-boot-mongoDB-board
 Created-By: Maven Integration for Eclipse
 

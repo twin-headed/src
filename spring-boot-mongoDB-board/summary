@@ -40,14 +40,10 @@ db
 -- 전체 데이터베이스 몱
 
 ///////////////////////////////////////////////////
-> db.memo.find()
-{ "_id" : 1, "writer" : "김태희", "memo" : "세번쨰 메모", "post_date" : ISODate("2021-04-21T08:23:54.189Z") }
-{ "_id" : 2, "writer" : "홍길동2", "memo" : "두번쨰 메모", "post_date" : ISODate("2021-04-21T08:23:40.901Z") }
-> db.memo.find((writer:"김태희"))
-uncaught exception: SyntaxError: missing ) in parenthetical :
-@(shell):1:20
-> db.memo.find({writer:"김태희"})
-{ "_id" : 1, "writer" : "김태희", "memo" : "세번쨰 메모", "post_date" : ISODate("2021-04-21T08:23:54.189Z") }
+> db.memo.find() -> 작성 목록을 보여줌
+db.memo.save({_id:1, writer:"홍길동", memo: "첫번째 메모", post_date:new Date()}) -> 저장
+db.memo.save({_id:2, writer:"홍길동2", memo: "두번째 메모", post_date:new Date()})
+db.memo.save({_id:3, writer:"김태희", memo: "세번째 메모", post_date:new Date()})
 ///////////////////////////////////////////////////////////////////
 
 
@@ -93,7 +89,15 @@ JSP / JSTL
 devtools - 설정, 클래스가 바뀌면 auto restart
 
 
-
+1. style.css
+2. views > include > header.jsp
+3. views > include > menu.jsp
+4. MemoVO.java
+5. MemoController.java
+6. MemoService / MemoServiceImpl.java
+7. MemoDAO	/ MemoDAOImpl.java
+8.
+9.
 
 
 
